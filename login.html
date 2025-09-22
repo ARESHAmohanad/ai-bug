@@ -45,7 +45,23 @@
                         <p>Sign in to your BugHunter account</p>
                     </div>
                     
+                    <!-- User Type Selection -->
+                    <div class="user-type-selection">
+                        <div class="user-type-tabs">
+                            <button type="button" class="user-type-tab active" data-type="hacker">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Ethical Hacker</span>
+                            </button>
+                            <button type="button" class="user-type-tab" data-type="company">
+                                <i class="fas fa-building"></i>
+                                <span>Company</span>
+                            </button>
+                        </div>
+                    </div>
+                    
                     <form id="login-form" class="auth-form">
+                        <input type="hidden" id="userType" name="userType" value="hacker">
+                        
                         <div class="form-group">
                             <label for="email" class="form-label">Email Address</label>
                             <input type="email" id="email" name="email" class="form-input" required placeholder="Enter your email">
@@ -136,6 +152,31 @@
 
     <script src="js/script.js"></script>
     <script>
+        // User type switching
+        document.querySelectorAll('.user-type-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                document.querySelectorAll('.user-type-tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                // Update hidden input value
+                document.getElementById('userType').value = this.dataset.type;
+                // Update UI based on user type
+                updateLoginFormForUserType(this.dataset.type);
+            });
+        });
+        
+        function updateLoginFormForUserType(userType) {
+            const emailLabel = document.querySelector('label[for="email"]');
+            if (userType === 'company') {
+                emailLabel.textContent = 'Company Email Address';
+                document.getElementById('email').placeholder = 'company@example.com';
+            } else {
+                emailLabel.textContent = 'Email Address';
+                document.getElementById('email').placeholder = 'Enter your email';
+            }
+        }
+        
         document.getElementById('login-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -153,7 +194,8 @@
                     body: JSON.stringify({
                         email: formData.get('email'),
                         password: formData.get('password'),
-                        remember: formData.get('remember') === 'on'
+                        remember: formData.get('remember') === 'on',
+                        userType: formData.get('userType')
                     })
                 });
                 
@@ -225,6 +267,51 @@
         
         .auth-header p {
             color: var(--text-secondary);
+        }
+        
+        .user-type-selection {
+            margin-bottom: 2rem;
+        }
+        
+        .user-type-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .user-type-tab {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-secondary);
+        }
+        
+        .user-type-tab:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .user-type-tab.active {
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.05);
+            color: var(--primary-color);
+        }
+        
+        .user-type-tab i {
+            font-size: 1.5rem;
+        }
+        
+        .user-type-tab span {
+            font-weight: 500;
+            font-size: 0.875rem;
         }
         
         .auth-form {

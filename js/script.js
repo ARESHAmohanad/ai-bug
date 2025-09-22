@@ -287,9 +287,10 @@ const Auth = {
         
         if (this.isLoggedIn()) {
             const user = this.getUser();
+            const displayName = user.userType === 'company' ? user.companyName : user.username;
             navAuth.innerHTML = `
                 <div class="user-menu">
-                    <span>Welcome, ${user.username}</span>
+                    <span>Welcome, ${displayName}</span>
                     <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
                     <button onclick="Auth.logout()" class="btn btn-danger">Logout</button>
                 </div>
@@ -319,15 +320,18 @@ const API = {
         
         // Mock responses based on endpoint
         if (endpoint === '/login') {
-            if (options.body && JSON.parse(options.body).email === 'demo@example.com') {
+            const requestBody = JSON.parse(options.body);
+            if (requestBody.email === 'demo@example.com') {
                 return {
                     success: true,
                     user: {
                         id: 1,
-                        username: 'DemoUser',
+                        username: requestBody.userType === 'company' ? 'Demo Company' : 'DemoUser',
                         email: 'demo@example.com',
-                        reputation: 1250,
-                        rank: 'Expert'
+                        userType: requestBody.userType || 'hacker',
+                        reputation: requestBody.userType === 'company' ? null : 1250,
+                        rank: requestBody.userType === 'company' ? null : 'Expert',
+                        companyName: requestBody.userType === 'company' ? 'Demo Company Inc.' : null
                     }
                 };
             } else {
