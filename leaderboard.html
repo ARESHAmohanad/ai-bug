@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - BugHunter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-shield-alt"></i>
+                    BugHunter
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="programs.html" class="nav-link">Programs</a>
+                <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+                <a href="reports.html" class="nav-link">Reports</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Leaderboard</h1>
+                <p>Top ethical hackers and security researchers worldwide</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Content -->
+    <section class="leaderboard-section">
+        <div class="container">
+            <!-- Top 3 -->
+            <div class="top-three">
+                <div class="podium-item second">
+                    <div class="podium-rank">2</div>
+                    <div class="hacker-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>CyberNinja</h3>
+                    <p class="reputation">85,240 pts</p>
+                    <p class="earnings">$142,500</p>
+                </div>
+                
+                <div class="podium-item first">
+                    <div class="podium-rank">1</div>
+                    <div class="hacker-avatar champion">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>SecurityMaster</h3>
+                    <p class="reputation">127,890 pts</p>
+                    <p class="earnings">$287,650</p>
+                </div>
+                
+                <div class="podium-item third">
+                    <div class="podium-rank">3</div>
+                    <div class="hacker-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>BugHunter42</h3>
+                    <p class="reputation">72,156 pts</p>
+                    <p class="earnings">$98,320</p>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="leaderboard-filters">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">All Time</button>
+                    <button class="filter-tab" data-filter="yearly">This Year</button>
+                    <button class="filter-tab" data-filter="monthly">This Month</button>
+                    <button class="filter-tab" data-filter="weekly">This Week</button>
+                </div>
+                <div class="filter-options">
+                    <select class="filter-select">
+                        <option value="reputation">By Reputation</option>
+                        <option value="earnings">By Earnings</option>
+                        <option value="reports">By Reports</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Leaderboard Table -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="table-container">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Hacker</th>
+                                    <th>Reputation</th>
+                                    <th>Total Earnings</th>
+                                    <th>Reports</th>
+                                    <th>Success Rate</th>
+                                    <th>Countries</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-body">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Your Ranking -->
+            <div class="your-ranking">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Your Current Ranking</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="ranking-info">
+                            <div class="rank-number">#47</div>
+                            <div class="rank-details">
+                                <h4>DemoUser</h4>
+                                <p>1,250 reputation points • $2,450 earned</p>
+                                <div class="rank-progress">
+                                    <span>To reach #46: Need 85 more points</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 73%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BugHunter</h4>
+                    <p>The world's leading bug bounty platform connecting ethical hackers with organizations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="programs.html">Bug Bounty Programs</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="reports.html">Public Reports</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Security Guidelines</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Responsible Disclosure</a></li>
+                        <li><a href="#">Code of Conduct</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BugHunter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Mock leaderboard data
+        const mockLeaderboard = [
+            { rank: 4, name: "EthicalHack3r", reputation: 68942, earnings: 89500, reports: 45, successRate: 89, country: "🇺🇸" },
+            { rank: 5, name: "VulnSeeker", reputation: 65234, earnings: 78200, reports: 38, successRate: 92, country: "🇬🇧" },
+            { rank: 6, name: "SecResearcher", reputation: 61876, earnings: 71800, reports: 42, successRate: 87, country: "🇩🇪" },
+            { rank: 7, name: "BugSlayer", reputation: 58493, earnings: 67300, reports: 39, successRate: 85, country: "🇫🇷" },
+            { rank: 8, name: "CyberGuardian", reputation: 55721, earnings: 63900, reports: 36, successRate: 91, country: "🇨🇦" },
+            { rank: 9, name: "InfoSecPro", reputation: 52384, earnings: 59400, reports: 44, successRate: 88, country: "🇦🇺" },
+            { rank: 10, name: "HackTheBox", reputation: 49567, earnings: 55600, reports: 33, successRate: 84, country: "🇯🇵" },
+            { rank: 11, name: "SecurityExpert", reputation: 47892, earnings: 52800, reports: 41, successRate: 90, country: "🇸🇪" },
+            { rank: 12, name: "VulnHunter", reputation: 45238, earnings: 48900, reports: 37, successRate: 86, country: "🇳🇱" },
+            { rank: 13, name: "BugBountyKing", reputation: 42976, earnings: 46200, reports: 35, successRate: 89, country: "🇰🇷" }
+        ];
+
+        function initializeLeaderboard() {
+            renderLeaderboard();
+            setupFilters();
+        }
+
+        function renderLeaderboard() {
+            const tbody = document.getElementById('leaderboard-body');
+            tbody.innerHTML = mockLeaderboard.map(hacker => `
+                <tr>
+                    <td>
+                        <div class="rank-cell">
+                            <span class="rank-number">#${hacker.rank}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="hacker-cell">
+                            <div class="hacker-avatar-small">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="hacker-info">
+                                <span class="hacker-name">${hacker.name}</span>
+                                <span class="hacker-badge">Expert</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="reputation-points">${hacker.reputation.toLocaleString()}</span>
+                    </td>
+                    <td>
+                        <span class="earnings-amount">$${hacker.earnings.toLocaleString()}</span>
+                    </td>
+                    <td>
+                        <span class="reports-count">${hacker.reports}</span>
+                    </td>
+                    <td>
+                        <div class="success-rate">
+                            <span>${hacker.successRate}%</span>
+                            <div class="success-bar">
+                                <div class="success-fill" style="width: ${hacker.successRate}%"></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="country-flag">${hacker.country}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function setupFilters() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    // In a real app, this would filter the data
+                    showNotification(`Filtered by ${tab.textContent}`, 'info');
+                });
+            });
+
+            const filterSelect = document.querySelector('.filter-select');
+            filterSelect.addEventListener('change', () => {
+                showNotification(`Sorted by ${filterSelect.value}`, 'info');
+            });
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', initializeLeaderboard);
+    </script>
+    
+    <style>
+        .page-header {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .header-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .leaderboard-section {
+            padding: 3rem 0;
+        }
+
+        .top-three {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .podium-item {
+            text-align: center;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .podium-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .podium-item.first {
+            transform: scale(1.1);
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .podium-rank {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .first .podium-rank {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .second .podium-rank {
+            background: #c0c0c0;
+            color: #333;
+        }
+
+        .third .podium-rank {
+            background: #cd7f32;
+            color: white;
+        }
+
+        .hacker-avatar {
+            width: 4rem;
+            height: 4rem;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .hacker-avatar.champion {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+        }
+
+        .podium-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .reputation {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .earnings {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .leaderboard-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-tab.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .leaderboard-table th,
+        .leaderboard-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .leaderboard-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .rank-cell {
+            display: flex;
+            align-items: center;
+        }
+
+        .rank-number {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .hacker-cell {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hacker-avatar-small {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        .hacker-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hacker-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .hacker-badge {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .reputation-points {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .earnings-amount {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .success-rate {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .success-bar {
+            width: 60px;
+            height: 4px;
+            background: var(--border-color);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .success-fill {
+            height: 100%;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .country-flag {
+            font-size: 1.25rem;
+        }
+
+        .your-ranking {
+            margin-top: 3rem;
+        }
+
+        .ranking-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .rank-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .rank-details h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .rank-details p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .rank-progress span {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .top-three {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .podium-item.first {
+                order: -1;
+                transform: none;
+            }
+
+            .leaderboard-filters {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .filter-tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .ranking-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</body>
+</html>
