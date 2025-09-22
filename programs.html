@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Bounty Programs - BugHunter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-shield-alt"></i>
+                    BugHunter
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="programs.html" class="nav-link">Programs</a>
+                <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+                <a href="reports.html" class="nav-link">Reports</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <div class="nav-auth">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="register.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Bug Bounty Programs</h1>
+                <p>Discover security programs from leading companies and organizations</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat">
+                    <div class="stat-number">2,000+</div>
+                    <div class="stat-label">Active Programs</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">$50M+</div>
+                    <div class="stat-label">Total Rewards</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Vulnerabilities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search programs..." class="search-input">
+                    </div>
+                    <div id="search-results" class="search-results"></div>
+                </div>
+                
+                <div class="filters">
+                    <select id="category-filter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="technology">Technology</option>
+                        <option value="finance">Finance</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="social">Social Media</option>
+                        <option value="gaming">Gaming</option>
+                    </select>
+                    
+                    <select id="reward-filter" class="filter-select">
+                        <option value="">All Rewards</option>
+                        <option value="0-1000">$0 - $1,000</option>
+                        <option value="1000-5000">$1,000 - $5,000</option>
+                        <option value="5000-15000">$5,000 - $15,000</option>
+                        <option value="15000+">$15,000+</option>
+                    </select>
+                    
+                    <select id="status-filter" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="paused">Paused</option>
+                        <option value="invitation">Invitation Only</option>
+                    </select>
+                    
+                    <button id="clear-filters" class="btn btn-outline">Clear Filters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Grid -->
+    <section class="programs-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Available Programs</h2>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="programs-container" class="programs-grid">
+                <!-- Programs will be loaded here -->
+            </div>
+            
+            <div class="load-more-container">
+                <button id="load-more" class="btn btn-primary">Load More Programs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BugHunter</h4>
+                    <p>The world's leading bug bounty platform connecting ethical hackers with organizations.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="programs.html">Bug Bounty Programs</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="reports.html">Public Reports</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Security Guidelines</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Responsible Disclosure</a></li>
+                        <li><a href="#">Code of Conduct</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BugHunter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Mock programs data
+        const mockPrograms = [
+            {
+                id: 1,
+                name: "Google Vulnerability Reward Program",
+                company: "Google",
+                logo: "fab fa-google",
+                category: "technology",
+                scope: "All Google products and services including YouTube, Gmail, Google Cloud",
+                minReward: 100,
+                maxReward: 31337,
+                status: "active",
+                participants: 15420,
+                vulnerabilities: 2341,
+                description: "Google's vulnerability reward program rewards security researchers for responsibly reporting security vulnerabilities in Google products and services.",
+                launchDate: "2010-11-01"
+            },
+            {
+                id: 2,
+                name: "Microsoft Bug Bounty Program",
+                company: "Microsoft",
+                logo: "fab fa-microsoft",
+                category: "technology",
+                scope: "Microsoft products including Windows, Office, Azure, Xbox",
+                minReward: 500,
+                maxReward: 15000,
+                status: "active",
+                participants: 12800,
+                vulnerabilities: 1890,
+                description: "Microsoft's bug bounty program focuses on finding vulnerabilities in Microsoft products and cloud services.",
+                launchDate: "2013-07-01"
+            },
+            {
+                id: 3,
+                name: "Apple Security Bounty",
+                company: "Apple",
+                logo: "fab fa-apple",
+                category: "technology",
+                scope: "iOS, macOS, watchOS, tvOS, and Apple services",
+                minReward: 25000,
+                maxReward: 1000000,
+                status: "invitation",
+                participants: 850,
+                vulnerabilities: 420,
+                description: "Apple's Security Bounty program rewards researchers for finding critical vulnerabilities in Apple's ecosystem.",
+                launchDate: "2016-08-01"
+            },
+            {
+                id: 4,
+                name: "Meta Bug Bounty",
+                company: "Meta",
+                logo: "fab fa-meta",
+                category: "social",
+                scope: "Facebook, Instagram, WhatsApp, Oculus, and related services",
+                minReward: 500,
+                maxReward: 40000,
+                status: "active",
+                participants: 8900,
+                vulnerabilities: 1456,
+                description: "Meta's bug bounty program covers the entire family of Meta apps and services.",
+                launchDate: "2011-07-01"
+            },
+            {
+                id: 5,
+                name: "Tesla Vehicle Security",
+                company: "Tesla",
+                logo: "fas fa-car",
+                category: "technology",
+                scope: "Tesla vehicles, charging infrastructure, and mobile applications",
+                minReward: 1000,
+                maxReward: 15000,
+                status: "active",
+                participants: 2100,
+                vulnerabilities: 234,
+                description: "Tesla's security program focuses on vehicle cybersecurity and related infrastructure.",
+                launchDate: "2014-08-01"
+            },
+            {
+                id: 6,
+                name: "PayPal Bug Bounty",
+                company: "PayPal",
+                logo: "fab fa-paypal",
+                category: "finance",
+                scope: "PayPal platform, Venmo, and payment processing systems",
+                minReward: 50,
+                maxReward: 30000,
+                status: "active",
+                participants: 6700,
+                vulnerabilities: 980,
+                description: "PayPal's security program protects millions of users' financial data and transactions.",
+                launchDate: "2012-05-01"
+            },
+            {
+                id: 7,
+                name: "Shopify Security",
+                company: "Shopify",
+                logo: "fab fa-shopify",
+                category: "ecommerce",
+                scope: "Shopify platform, admin panel, and merchant tools",
+                minReward: 500,
+                maxReward: 25000,
+                status: "active",
+                participants: 4200,
+                vulnerabilities: 567,
+                description: "Shopify's bug bounty program helps secure e-commerce for millions of merchants worldwide.",
+                launchDate: "2013-12-01"
+            },
+            {
+                id: 8,
+                name: "Uber Security Rewards",
+                company: "Uber",
+                logo: "fab fa-uber",
+                category: "technology",
+                scope: "Uber rider and driver apps, backend systems",
+                minReward: 500,
+                maxReward: 10000,
+                status: "paused",
+                participants: 3800,
+                vulnerabilities: 445,
+                description: "Uber's security program covers ride-sharing and food delivery platforms.",
+                launchDate: "2014-03-01"
+            }
+        ];
+
+        let filteredPrograms = [...mockPrograms];
+        let currentView = 'grid';
+        let currentPage = 1;
+        const programsPerPage = 6;
+
+        function initializePrograms() {
+            renderPrograms();
+            setupFilters();
+            setupViewToggle();
+        }
+
+        function renderPrograms() {
+            const container = document.getElementById('programs-container');
+            const startIndex = 0;
+            const endIndex = currentPage * programsPerPage;
+            const programsToShow = filteredPrograms.slice(startIndex, endIndex);
+
+            if (currentView === 'grid') {
+                container.className = 'programs-grid';
+                container.innerHTML = programsToShow.map(program => createProgramCard(program)).join('');
+            } else {
+                container.className = 'programs-list';
+                container.innerHTML = programsToShow.map(program => createProgramListItem(program)).join('');
+            }
+
+            // Show/hide load more button
+            const loadMoreBtn = document.getElementById('load-more');
+            if (endIndex >= filteredPrograms.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+        }
+
+        function createProgramCard(program) {
+            const statusClass = program.status === 'active' ? 'status-active' : 
+                               program.status === 'paused' ? 'status-paused' : 'status-invitation';
+            
+            return `
+                <div class="program-card" onclick="openProgramDetails(${program.id})">
+                    <div class="program-header">
+                        <div class="program-logo">
+                            <i class="${program.logo}"></i>
+                        </div>
+                        <div class="program-status ${statusClass}">
+                            ${program.status.charAt(0).toUpperCase() + program.status.slice(1)}
+                        </div>
+                    </div>
+                    <div class="program-content">
+                        <h3 class="program-title">${program.name}</h3>
+                        <p class="program-company">${program.company}</p>
+                        <p class="program-scope">${program.scope}</p>
+                        <div class="program-rewards">
+                            <span class="reward-range">$${program.minReward.toLocaleString()} - $${program.maxReward.toLocaleString()}</span>
+                        </div>
+                        <div class="program-stats">
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>${program.participants.toLocaleString()} participants</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-bug"></i>
+                                <span>${program.vulnerabilities} bugs found</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-actions">
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); joinProgram(${program.id})">
+                            ${program.status === 'invitation' ? 'Request Invitation' : 'Join Program'}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createProgramListItem(program) {
+            const statusClass = program.status === 'active' ? 'status-active' : 
+                               program.status === 'paused' ? 'status-paused' : 'status-invitation';
+            
+            return `
+                <div class="program-list-item" onclick="openProgramDetails(${program.id})">
+                    <div class="program-info">
+                        <div class="program-meta">
+                            <div class="program-logo">
+                                <i class="${program.logo}"></i>
+                            </div>
+                            <div class="program-details">
+                                <h3 class="program-title">${program.name}</h3>
+                                <p class="program-company">${program.company}</p>
+                                <p class="program-scope">${program.scope}</p>
+                            </div>
+                        </div>
+                        <div class="program-metrics">
+                            <div class="metric">
+                                <label>Reward Range</label>
+                                <span>$${program.minReward.toLocaleString()} - $${program.maxReward.toLocaleString()}</span>
+                            </div>
+                            <div class="metric">
+                                <label>Participants</label>
+                                <span>${program.participants.toLocaleString()}</span>
+                            </div>
+                            <div class="metric">
+                                <label>Bugs Found</label>
+                                <span>${program.vulnerabilities}</span>
+                            </div>
+                            <div class="metric">
+                                <label>Status</label>
+                                <span class="program-status ${statusClass}">
+                                    ${program.status.charAt(0).toUpperCase() + program.status.slice(1)}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-actions">
+                        <button class="btn btn-primary" onclick="event.stopPropagation(); joinProgram(${program.id})">
+                            ${program.status === 'invitation' ? 'Request Invitation' : 'Join Program'}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function setupFilters() {
+            const categoryFilter = document.getElementById('category-filter');
+            const rewardFilter = document.getElementById('reward-filter');
+            const statusFilter = document.getElementById('status-filter');
+            const clearFilters = document.getElementById('clear-filters');
+
+            [categoryFilter, rewardFilter, statusFilter].forEach(filter => {
+                filter.addEventListener('change', applyFilters);
+            });
+
+            clearFilters.addEventListener('click', () => {
+                categoryFilter.value = '';
+                rewardFilter.value = '';
+                statusFilter.value = '';
+                applyFilters();
+            });
+        }
+
+        function applyFilters() {
+            const category = document.getElementById('category-filter').value;
+            const reward = document.getElementById('reward-filter').value;
+            const status = document.getElementById('status-filter').value;
+
+            filteredPrograms = mockPrograms.filter(program => {
+                if (category && program.category !== category) return false;
+                if (status && program.status !== status) return false;
+                
+                if (reward) {
+                    const [min, max] = reward.split('-').map(r => r.replace('+', ''));
+                    const minReward = parseInt(min);
+                    const maxReward = max ? parseInt(max) : Infinity;
+                    
+                    if (program.maxReward < minReward || program.minReward > maxReward) return false;
+                }
+                
+                return true;
+            });
+
+            currentPage = 1;
+            renderPrograms();
+        }
+
+        function setupViewToggle() {
+            const viewButtons = document.querySelectorAll('.view-btn');
+            
+            viewButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    viewButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentView = btn.dataset.view;
+                    renderPrograms();
+                });
+            });
+        }
+
+        function openProgramDetails(programId) {
+            const program = mockPrograms.find(p => p.id === programId);
+            showNotification(`Opening details for ${program.name}`, 'info');
+            // In a real app, this would navigate to a detailed program page
+        }
+
+        function joinProgram(programId) {
+            const program = mockPrograms.find(p => p.id === programId);
+            
+            if (!Auth.isLoggedIn()) {
+                showNotification('Please log in to join programs', 'warning');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+                return;
+            }
+
+            if (program.status === 'invitation') {
+                showNotification('Invitation request sent!', 'success');
+            } else if (program.status === 'paused') {
+                showNotification('This program is currently paused', 'warning');
+            } else {
+                showNotification(`Successfully joined ${program.name}!`, 'success');
+            }
+        }
+
+        // Load more functionality
+        document.getElementById('load-more').addEventListener('click', () => {
+            currentPage++;
+            renderPrograms();
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', initializePrograms);
+    </script>
+    
+    <style>
+        .page-header {
+            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .header-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .header-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .filters-section {
+            padding: 2rem 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filters-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
+        .search-input-wrapper i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--bg-primary);
+            font-size: 1rem;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-select {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--bg-primary);
+            font-size: 0.875rem;
+            min-width: 150px;
+        }
+
+        .programs-section {
+            padding: 3rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .view-btn {
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-primary);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .view-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .programs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .program-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .program-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .program-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-logo {
+            width: 3rem;
+            height: 3rem;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .program-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .program-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .status-paused {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent-color);
+        }
+
+        .status-invitation {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+        }
+
+        .program-content {
+            flex: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .program-company {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .program-scope {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .program-rewards {
+            margin-bottom: 1rem;
+        }
+
+        .reward-range {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 1.125rem;
+        }
+
+        .program-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .program-stats .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .program-stats .stat i {
+            color: var(--primary-color);
+            width: 1rem;
+        }
+
+        .program-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .program-list-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .program-list-item:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .program-info {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .program-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .program-details h3 {
+            margin: 0 0 0.25rem 0;
+            color: var(--text-primary);
+        }
+
+        .program-details p {
+            margin: 0.25rem 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .program-metrics {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .metric {
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .metric label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .metric span {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .load-more-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+
+            .filters-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .filters {
+                flex-wrap: wrap;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .filter-select {
+                min-width: 120px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-list-item {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .program-metrics {
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+        }
+    </style>
+</body>
+</html>
